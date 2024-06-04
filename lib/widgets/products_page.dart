@@ -22,7 +22,7 @@ class ProductsPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {},
-                child: const Text('Add to Cart'),
+                child: const Text('Добавить в корзину'),
               ),
             ],
           ),
