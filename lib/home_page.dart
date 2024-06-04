@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_store/widgets/cart_page/cart_page.dart';
-import 'package:online_store/widgets/courses_page/courses_page.dart';
-import 'package:online_store/widgets/products_page/products_page.dart';
+import 'package:online_store/widgets/course_item/course_item.dart';
+import 'package:online_store/widgets/products_item/products_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,10 +60,10 @@ class _HomePageState extends State<HomePage> {
                   delegate: SliverChildListDelegate(
                     [
                       if (selectedCategory == 'All' || selectedCategory == 'Courses') ... [
-                        CoursesPage(),
+                        CourseItem(),
                       ],
                       if (selectedCategory == 'All' || selectedCategory == 'T-Shirt') ... [
-                        ProductsPage(),
+                        ProductsItem(),
                       ],
                     ],
                   ),

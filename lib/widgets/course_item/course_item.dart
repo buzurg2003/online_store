@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ProductsPage extends StatelessWidget {
-  const ProductsPage({super.key});
+class CourseItem extends StatelessWidget {
+  const CourseItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: [
-          Image.asset("images/t-shirt.jpg"),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.asset('images/english_course.jpg'),
+          ),
           const ListTile(
-            title: Text('Футболка'),
-            subtitle: Text('Футболка Adidas'),
+            title: Text('English'),
+            subtitle: Text('Курс английского языка'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

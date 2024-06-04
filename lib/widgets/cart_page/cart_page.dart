@@ -11,43 +11,49 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers: <Widget>[
+      slivers: <Widget> [
         const SliverAppBar(
           title: Text('Корзина'),
           pinned: true,
         ),
-        SliverPadding(
-          padding: const EdgeInsets.all(8.0),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.notifications_sharp),
-                    title: const Text('English'),
-                    subtitle: const Text('Курс английского языка'),
-                    trailing: FilledButton(
-                      onPressed: () {},
-                      child: const Text('Купить'),
-                    ),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.notifications_sharp),
-                    title: const Text('Футболка'),
-                    subtitle: const Text('Футболка Adidas'),
-                    trailing: FilledButton(
-                      onPressed: () {},
-                      child: const Text('Купить'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+              return CartItemRow(
+                indexInList: index,
+              );
+            },
+            childCount: 10,
           ),
         ),
       ],
+    );
+  }
+}
+
+class CartItemRow extends StatelessWidget {
+  final int indexInList;
+
+  const CartItemRow({
+    super.key,
+    required this.indexInList
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: ListTile(
+          leading: const Icon(Icons.notifications_sharp),
+          title: const Text('English'),
+          subtitle: const Text('Курс английского языка'),
+          trailing: FilledButton(
+            onPressed: () {},
+            child: const Text('Купить'),
+          ),
+        ),
+      ),
     );
   }
 }
