@@ -13,7 +13,7 @@ class _CartPageState extends State<CartPage> {
     return CustomScrollView(
       slivers: <Widget>[
         const SliverAppBar(
-          title: Text('Cart'),
+          title: Text('Корзина'),
           pinned: true,
         ),
         SliverPadding(
@@ -21,18 +21,26 @@ class _CartPageState extends State<CartPage> {
           sliver: SliverList(
             delegate: SliverChildListDelegate(
               [
-                const Card(
+                Card(
                   child: ListTile(
-                    leading: Icon(Icons.notifications_sharp),
-                    title: Text('Item 1'),
-                    subtitle: Text('This is a notification'),
+                    leading: const Icon(Icons.notifications_sharp),
+                    title: const Text('English'),
+                    subtitle: const Text('Курс английского языка'),
+                    trailing: FilledButton(
+                      onPressed: () {},
+                      child: const Text('Купить'),
+                    ),
                   ),
                 ),
-                const Card(
+                Card(
                   child: ListTile(
-                    leading: Icon(Icons.notifications_sharp),
-                    title: Text('Item 2'),
-                    subtitle: Text('This is a notification'),
+                    leading: const Icon(Icons.notifications_sharp),
+                    title: const Text('Футболка'),
+                    subtitle: const Text('Футболка Adidas'),
+                    trailing: FilledButton(
+                      onPressed: () {},
+                      child: const Text('Купить'),
+                    ),
                   ),
                 ),
               ],

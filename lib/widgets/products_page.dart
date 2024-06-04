@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CoursesPage extends StatelessWidget {
-  const CoursesPage({super.key});
+class ProductsPage extends StatelessWidget {
+  const ProductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Image.asset('images/english_course.jpg'),
-          ),
+          Image.asset("images/t-shirt.jpg"),
           const ListTile(
-            title: Text('English'),
-            subtitle: Text('Курс английского языка'),
+            title: Text('Футболка'),
+            subtitle: Text('Футболка Adidas'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -25,7 +22,7 @@ class CoursesPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {},
-                child: const Text('Добавить в корзину'),
+                child: const Text('Add to Cart'),
               ),
             ],
           ),

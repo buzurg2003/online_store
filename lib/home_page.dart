@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_store/widgets/cart_page.dart';
+import 'package:online_store/widgets/courses_page.dart';
+import 'package:online_store/widgets/products_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,15 +34,15 @@ class _HomePageState extends State<HomePage> {
                     segments: const [
                       ButtonSegment(
                         value: 'All',
-                        label: Text('All'),
+                        label: Text('Все'),
                       ),
                       ButtonSegment(
                         value: 'Courses',
-                        label: Text('Courses'),
+                        label: Text('Курсы'),
                       ),
                       ButtonSegment(
                         value: 'T-Shirt',
-                        label: Text('T-Shirt'),
+                        label: Text('Продукты'),
                       ),
                     ],
                     selected: {selectedCategory},
@@ -58,59 +60,10 @@ class _HomePageState extends State<HomePage> {
                   delegate: SliverChildListDelegate(
                     [
                       if (selectedCategory == 'All' || selectedCategory == 'Courses') ... [
-                        Card(
-                          child: Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child: Image.asset('images/english_course.jpg'),
-                              ),
-                              const ListTile(
-                                title: Text('English'),
-                                subtitle: Text('English course'),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FilledButton(
-                                    onPressed: () {},
-                                    child: const Text('Buy now'),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text('Add to Cart'),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        CoursesPage(),
                       ],
-                      if (selectedCategory == 'All' || selectedCategory == 'T-Shirt') ...[
-                        Card(
-                          child: Column(
-                            children: [
-                              Image.asset("images/t-shirt.jpg"),
-                              const ListTile(
-                                title: Text('T-Shirt'),
-                                subtitle: Text('Adidas T-Shirt'),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FilledButton(
-                                    onPressed: () {},
-                                    child: const Text('Buy now'),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text('Add to Cart'),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                      if (selectedCategory == 'All' || selectedCategory == 'T-Shirt') ... [
+                        ProductsPage(),
                       ],
                     ],
                   ),
@@ -127,11 +80,11 @@ class _HomePageState extends State<HomePage> {
         destinations: const <Widget>[
           NavigationDestination(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Главная',
           ),
           NavigationDestination(
             icon: Icon(Icons.shopping_bag_sharp),
-            label: 'Cart',
+            label: 'Корзина',
           ),
         ],
         selectedIndex: currentPageIndex,
