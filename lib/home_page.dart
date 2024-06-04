@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_store/widgets/cart_page.dart';
-import 'package:online_store/widgets/courses_page.dart';
-import 'package:online_store/widgets/products_page.dart';
+import 'package:online_store/widgets/cart_page/cart_page.dart';
+import 'package:online_store/widgets/courses_page/courses_page.dart';
+import 'package:online_store/widgets/products_page/products_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
