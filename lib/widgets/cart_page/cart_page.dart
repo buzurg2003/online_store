@@ -26,7 +26,19 @@ class CartPage extends StatelessWidget {
                   title: Text(item.title),
                   subtitle: Text(item.subtitle),
                   trailing: FilledButton(
-                    onPressed: () {},
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('English'),
+                        content: const Text('Курс был куплен'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    ),
                     child: const Text('Купить'),
                   ),
                 ),
@@ -41,14 +53,26 @@ class CartPage extends StatelessWidget {
                   title: Text(item.title),
                   subtitle: Text(item.subtitle),
                   trailing: FilledButton(
-                    onPressed: () {},
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Футболка'),
+                        content: const Text('Товар был куплен'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    ),
                     child: const Text('Купить'),
                   ),
                 ),
               ),
             );
           }
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         },
       ),
     );

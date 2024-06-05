@@ -5,7 +5,11 @@ class CourseItem extends StatelessWidget {
   final Course course;
   final Function(Course) addToCart;
 
-  const CourseItem({super.key, required this.course, required this.addToCart});
+  const CourseItem({
+    super.key,
+    required this.course,
+    required this.addToCart
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,19 @@ class CourseItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FilledButton(
-                onPressed: () {},
+                onPressed: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('English'),
+                    content: const Text('Курс был куплен'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'OK'),
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                ),
                 child: const Text('Купить сейчас'),
               ),
               ElevatedButton(
