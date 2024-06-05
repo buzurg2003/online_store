@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:online_store/widgets/cart_page/cart_page.dart';
+import 'package:online_store/widgets/cart_page/cart_page_model.dart';
 import 'package:online_store/widgets/course_item/course_item.dart';
 import 'package:online_store/widgets/products_item/products_item.dart';
+import 'package:online_store/widgets/products_item/products_item_model.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final Function(dynamic) addToCart;
+  final List<dynamic> cartItems;
+
+  const HomePage({super.key, required this.addToCart, required this.cartItems});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -59,11 +64,25 @@ class _HomePageState extends State<HomePage> {
                 sliver: SliverList(
                   delegate: SliverChildListDelegate(
                     [
-                      if (selectedCategory == 'All' || selectedCategory == 'Courses') ... [
-                        CourseItem(),
+                      if (selectedCategory == 'All' || selectedCategory == 'Courses') ...[
+                        CourseItem(
+                          course: Course(
+                            title: 'English',
+                            subtitle: 'Курс английского языка',
+                            imagePath: 'images/english_course.jpg',
+                          ),
+                          addToCart: widget.addToCart,
+                        ),
                       ],
-                      if (selectedCategory == 'All' || selectedCategory == 'T-Shirt') ... [
-                        ProductsItem(),
+                      if (selectedCategory == 'All' || selectedCategory == 'T-Shirt') ...[
+                        ProductsItem(
+                          product: Product(
+                            title: 'Футболка',
+                            subtitle: 'Футболка Adidas',
+                            imagePath: 'images/t-shirt.jpg',
+                          ),
+                          addToCart: widget.addToCart,
+                        ),
                       ],
                     ],
                   ),
@@ -73,7 +92,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
           /// Cart page
-          CartPage(),
+          CartPage(cartItems: widget.cartItems),
         ],
       ),
       bottomNavigationBar: NavigationBar(

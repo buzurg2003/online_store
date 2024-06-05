@@ -1,58 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:online_store/widgets/cart_page/cart_page_model.dart';
+import 'package:online_store/widgets/products_item/products_item_model.dart';
 
-class CartPage extends StatefulWidget {
-  const CartPage({super.key});
+class CartPage extends StatelessWidget {
+  final List<dynamic> cartItems;
 
-  @override
-  State<CartPage> createState() => _CartPageState();
-}
-
-class _CartPageState extends State<CartPage> {
-  @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget> [
-        const SliverAppBar(
-          title: Text('Корзина'),
-          pinned: true,
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-              return CartItemRow(
-                indexInList: index,
-              );
-            },
-            childCount: 10,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class CartItemRow extends StatelessWidget {
-  final int indexInList;
-
-  const CartItemRow({
-    super.key,
-    required this.indexInList
-  });
+  const CartPage({super.key, required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        child: ListTile(
-          leading: const Icon(Icons.notifications_sharp),
-          title: const Text('English'),
-          subtitle: const Text('Курс английского языка'),
-          trailing: FilledButton(
-            onPressed: () {},
-            child: const Text('Купить'),
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Корзина'),
+      ),
+      body: ListView.builder(
+        itemCount: cartItems.length,
+        itemBuilder: (context, index) {
+          final item = cartItems[index];
+          if (item is Course) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  leading: const Icon(Icons.notifications_sharp),
+                  title: Text(item.title),
+                  subtitle: Text(item.subtitle),
+                  trailing: FilledButton(
+                    onPressed: () {},
+                    child: const Text('Купить'),
+                  ),
+                ),
+              ),
+            );
+          } else if (item is Product) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  leading: const Icon(Icons.notifications_sharp),
+                  title: Text(item.title),
+                  subtitle: Text(item.subtitle),
+                  trailing: FilledButton(
+                    onPressed: () {},
+                    child: const Text('Купить'),
+                  ),
+                ),
+              ),
+            );
+          }
+          return SizedBox.shrink();
+        },
       ),
     );
   }
