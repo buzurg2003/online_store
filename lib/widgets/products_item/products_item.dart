@@ -5,7 +5,11 @@ class ProductsItem extends StatelessWidget {
   final Product product;
   final Function(Product) addToCart;
 
-  const ProductsItem({super.key, required this.product, required this.addToCart});
+  const ProductsItem({
+    super.key,
+    required this.product,
+    required this.addToCart
+  });
 
   @override
   Widget build(BuildContext context) {
